@@ -1,27 +1,16 @@
 package NailShop;
 
-import javax.persistence.*;
-import org.springframework.beans.BeanUtils;
-import java.util.List;
+import NailShop.AbstractEvent;
 
-@Entity
-@Table(name="Nail_table")
-public class Nail {
+public class NailFinished extends AbstractEvent {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private Long reservationId;
     private String employee;
     private String description;
     private Long fee;
 
-    @PrePersist
-    public void onPrePersist(){
-        NailFinished nailFinished = new NailFinished();
-        BeanUtils.copyProperties(this, nailFinished);
-        nailFinished.publish();
-    }
+    public NailFinished() { super(); }
 
     public Long getId() {
         return id;
@@ -58,8 +47,4 @@ public class Nail {
     public void setFee(Long fee) {
         this.fee = fee;
     }
-
-
-
-
 }
