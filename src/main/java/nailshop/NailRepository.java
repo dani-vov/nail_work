@@ -1,8 +1,8 @@
 package nailshop;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface NailRepository extends PagingAndSortingRepository<Nail, Long>{
+public interface NailRepository extends CrudRepository<Nail, Long> {
 
 
 }

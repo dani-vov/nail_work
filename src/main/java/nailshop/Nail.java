@@ -18,8 +18,8 @@ public class Nail {
     private String reservationDate;
     private String ReservatorName;
 
-    @PrePersist
-    public void onPrePersist(){
+    @PostPersist
+    public void onPostPersist(){
         NailFinished nailFinished = new NailFinished(this);
         BeanUtils.copyProperties(this, nailFinished);
         nailFinished.publish();
